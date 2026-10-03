@@ -14,7 +14,7 @@ namespace Game.Scripts.Levels.Game
         [Header("States")]
         [SerializeField] private GameState m_gameState;
         [SerializeField] private InitializeState m_initializeState = new InitializeState();
-
+        
         [Header("Settings")]
         [SerializeField] private LevelSceneAsset menuScene;
         
@@ -25,6 +25,7 @@ namespace Game.Scripts.Levels.Game
 
         #region Private members
 
+        private PawnPlayerController m_pawnPlayer;
         private GameState m_previousGameState;
         private readonly Dictionary<GameState, GameStateController> m_states = new Dictionary<GameState, GameStateController>();
 
@@ -59,6 +60,11 @@ namespace Game.Scripts.Levels.Game
         public void ReturnMenu()
         {
             LevelManager.Instance.LoadSceneAsync(menuScene);
+        }
+        
+        public PawnPlayerController GetPlayer()
+        {
+            return m_pawnPlayer;
         }
         
         #endregion
@@ -99,6 +105,11 @@ namespace Game.Scripts.Levels.Game
         #endregion
 
         #region LevelController
+
+        protected override void OnAwake()
+        {
+            m_pawnPlayer = FindAnyObjectByType<PawnPlayerController>();
+        }
 
         public override void BindAll(LevelContext context)
         {
