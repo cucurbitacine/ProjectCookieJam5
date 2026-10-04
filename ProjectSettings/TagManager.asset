@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Interact
   - 
   - 
   - 
@@ -46,6 +46,12 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 2640562307
+    locked: 0
+  - name: Shadows
+    uniqueID: 1065543805
+    locked: 0
+  - name: Furniture
+    uniqueID: 2060299767
     locked: 0
   - name: Default
     uniqueID: 0
