@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e94ac21e6f4ef89b14252e697b51af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.InteractTrigger
-  m_target: {fileID: 1084901973520360311}
 --- !u!1 &3131883743020572415
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,13 +178,14 @@ GameObject:
   - component: {fileID: 4531369933723024650}
   - component: {fileID: 6046021992536968285}
   - component: {fileID: 4202724577154298769}
+  - component: {fileID: 5730435166567285097}
   m_Layer: 0
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4531369933723024650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3131883743020572415}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -253,6 +253,49 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!114 &5730435166567285097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131883743020572415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab9c37329524c989d455ca2b6bc80e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.InteractTargetEvent
+  m_interactState: 1
+  m_onEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6046021992536968285}
+        m_TargetAssemblyTypeName: UnityEngine.Canvas, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  m_onExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6046021992536968285}
+        m_TargetAssemblyTypeName: UnityEngine.Canvas, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4281228045473315006
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +354,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6c161857a89eed448a9b4b07213c2052, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -493,7 +536,6 @@ GameObject:
   - component: {fileID: 3570685467138756987}
   - component: {fileID: 1084901973520360311}
   - component: {fileID: 688720908184042241}
-  - component: {fileID: 6817216813494815173}
   m_Layer: 0
   m_Name: LightWallSwitcher
   m_TagString: Untagged
@@ -517,6 +559,7 @@ Transform:
   - {fileID: 1467809388459635939}
   - {fileID: 2855033796612061973}
   - {fileID: 4531369933723024650}
+  - {fileID: 6025007924677946067}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1084901973520360311
@@ -553,46 +596,73 @@ MonoBehaviour:
   m_onExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6817216813494815173
-MonoBehaviour:
+--- !u!1001 &8626746214770162383
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3570685467138756987}
+    m_Modifications:
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469487301499800488, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_sprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469487301499800488, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: 'm_sprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5097286726243733154}
+    - target: {fileID: 5163200166346795567, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+      propertyPath: m_Name
+      value: Outline
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+--- !u!4 &6025007924677946067 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2604623409040429084, guid: 91d5b9bb62ddfb046bf952408156e20b, type: 3}
+  m_PrefabInstance: {fileID: 8626746214770162383}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5487836935663308205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab9c37329524c989d455ca2b6bc80e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.InteractTargetEvent
-  m_interactState: 0
-  m_onEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3131883743020572415}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  m_onExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3131883743020572415}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

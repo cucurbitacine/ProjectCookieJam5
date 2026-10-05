@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 namespace Game.Scripts.Interactions
 {
-    [RequireComponent(typeof(InteractTarget))]
     public class InteractTargetEvent : MonoBehaviour
     {
         [SerializeField] private InteractState m_interactState;
@@ -11,9 +10,8 @@ namespace Game.Scripts.Interactions
         [SerializeField] private UnityEvent<GameObject> m_onEnter = new UnityEvent<GameObject>();
         [SerializeField] private UnityEvent<GameObject> m_onExit = new UnityEvent<GameObject>();
         
-        private InteractTarget m_target;
-
-
+        private InteractableObject m_target;
+        
         private void OnStateChanged(GameObject actor, InteractState state, bool value)
         {
             if (m_interactState != state) return;
@@ -30,7 +28,7 @@ namespace Game.Scripts.Interactions
         
         private void Awake()
         {
-            m_target = GetComponent<InteractTarget>();
+            m_target = GetComponentInParent<InteractableObject>();
         }
 
         private void OnEnable()

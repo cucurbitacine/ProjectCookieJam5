@@ -4,8 +4,9 @@ using UnityEngine;
 namespace Game.Scripts.Interactions
 {
     [DisallowMultipleComponent]
-    public class InteractTarget : MonoBehaviour
+    public class InteractableObject : MonoBehaviour
     {
+        [Header("Interactable")]
         [SerializeField] private bool m_hovered;
         [SerializeField] private bool m_selected;
         [SerializeField] private bool m_interacted;
@@ -15,6 +16,11 @@ namespace Game.Scripts.Interactions
         public bool IsInteracted => m_interacted;
         
         public Action<GameObject, InteractState, bool> StateChanged;
+
+        public virtual bool HasAccess(GameObject actor)
+        {
+            return true;
+        }
         
         public void Hover(GameObject actor, bool value)
         {
@@ -37,7 +43,7 @@ namespace Game.Scripts.Interactions
         public void Interact(GameObject actor, bool value)
         {
             m_interacted = value;
-
+            
             OnInteract(actor, value);
             
             StateChanged?.Invoke(actor, InteractState.Interact, value);

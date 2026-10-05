@@ -5,20 +5,30 @@ namespace Game.Scripts.Interactions
 {
     public class InteractActor : MonoBehaviour
     {
+        [SerializeField] private GameObject m_actor;
+        
+        [Space]
+        [SerializeField] private InteractType m_interactType;
         [SerializeField] private Vector3 m_interactPoint;
         [Min(0f)]
-        [SerializeField] private float m_interactRadius;
+        [SerializeField] private float m_interactRadius = 0.5f;
+        [SerializeField] private Vector2 m_interactSize = Vector2.one;
         [SerializeField] private ContactFilter2D m_interactFilter = default;
         [SerializeField] private bool m_useWorldSpace;
-        [SerializeField] private SelectType m_selectType;
-
-        [Space]
-        [SerializeField] private InteractTarget m_selectedTarget;
-        [SerializeField] private InteractTarget m_oldestTarget;
-        [SerializeField] private InteractTarget m_newestTarget;
         
-        private readonly HashSet<InteractTarget> m_checking = new HashSet<InteractTarget>();
-        private readonly List<InteractTarget> m_observed = new List<InteractTarget>();
+        [Space]
+        [SerializeField] private SelectType m_selectType;
+        [SerializeField] private InteractableObject m_selectedTarget;
+        private InteractableObject m_oldestTarget;
+        private InteractableObject m_newestTarget;
+        
+        private readonly HashSet<InteractableObject> m_checking = new HashSet<InteractableObject>();
+        private readonly List<InteractableObject> m_observed = new List<InteractableObject>();
+
+        public InteractType GetInteractType()
+        {
+            return m_interactType;
+        }
         
         public void SetInteractPoint(Vector2 point)
         {
@@ -35,6 +45,11 @@ namespace Game.Scripts.Interactions
             return m_interactRadius;
         }
 
+        public Vector2 GetInteractSize()
+        {
+            return m_interactSize;
+        }
+        
         public ContactFilter2D GetInteractFilter()
         {
             return m_interactFilter;
@@ -42,7 +57,22 @@ namespace Game.Scripts.Interactions
 
         public void Interact(bool value)
         {
-            m_selectedTarget?.Interact(gameObject, value);
+            m_selectedTarget?.Interact(GetActor(), value);
+        }
+
+        public GameObject GetActor()
+        {
+            return m_actor == null ? (m_actor = gameObject) : m_actor;
+        }
+
+        private ColliderArray2D Overlap()
+        {
+            switch (GetInteractType())
+            {
+                case InteractType.Circle: return OverlapCircle();
+                case InteractType.Box: return OverlapBox();
+                default: return default;
+            }
         }
         
         private ColliderArray2D OverlapCircle()
@@ -51,24 +81,33 @@ namespace Game.Scripts.Interactions
             var radius = GetInteractRadius();
             var filter = GetInteractFilter();
             
-            return  Physics2D.OverlapCircle(point, radius, filter);
+            return Physics2D.OverlapCircle(point, radius, filter);
         }
 
-        private bool TryGetTarget(Collider2D other, out InteractTarget target)
+        private ColliderArray2D OverlapBox()
+        {
+            var point = GetInteractPoint();
+            var size = GetInteractSize();
+            var filter = GetInteractFilter();
+            
+            return  Physics2D.OverlapBox(point, size, 0f, filter);
+        }
+        
+        private bool TryGetTarget(Collider2D other, out InteractableObject target)
         {
             if (InteractTrigger.Lookup(other, out var trigger))
             {
                 target = trigger.GetTarget();
-                return true;
+                return target.HasAccess(GetActor());
             }
 
             target = null;
             return false;
         }
         
-        private void OnEnter(InteractTarget target)
+        private void OnEnter(InteractableObject target)
         {
-            target.Hover(gameObject, true);
+            target.Hover(GetActor(), true);
             
             if (m_observed.Count == 0)
             {
@@ -80,7 +119,7 @@ namespace Game.Scripts.Interactions
             m_observed.Add(target);
         }
         
-        private void OnExit(int index, InteractTarget target)
+        private void OnExit(int index, InteractableObject target)
         {
             m_observed.RemoveAt(index);
 
@@ -94,10 +133,10 @@ namespace Game.Scripts.Interactions
                 ChangeNewest(m_observed.Count > 0 ? m_observed[m_observed.Count - 1] : null);
             }
             
-            target.Hover(gameObject, false);
+            target.Hover(GetActor(), false);
         }
 
-        private void ChangeOldest(InteractTarget target)
+        private void ChangeOldest(InteractableObject target)
         {
             if (m_oldestTarget == target) return;
             
@@ -106,7 +145,7 @@ namespace Game.Scripts.Interactions
             if (m_selectType == SelectType.Oldest) ChangeSelected(m_oldestTarget);
         }
         
-        private void ChangeNewest(InteractTarget target)
+        private void ChangeNewest(InteractableObject target)
         {
             if (m_newestTarget == target) return;
             
@@ -115,18 +154,18 @@ namespace Game.Scripts.Interactions
             if (m_selectType == SelectType.Newest) ChangeSelected(m_newestTarget);
         }
 
-        private void ChangeSelected(InteractTarget target)
+        private void ChangeSelected(InteractableObject target)
         {
             if (m_selectedTarget == target) return;
             
-            m_selectedTarget?.Select(gameObject, false);
+            m_selectedTarget?.Select(GetActor(), false);
             m_selectedTarget = target;
-            m_selectedTarget?.Select(gameObject, true);
+            m_selectedTarget?.Select(GetActor(), true);
         }
 
         private void CheckTargets()
         {
-            var result = OverlapCircle();
+            var result = Overlap();
             
             m_checking.Clear();
             for (var i = 0; i < result.Length; i++)
@@ -175,20 +214,33 @@ namespace Game.Scripts.Interactions
         private void OnDrawGizmos()
         {
             Gizmos.color = m_selectedTarget ? Color.limeGreen : Color.softRed;
-            
             var point = GetInteractPoint();
-            var radius = GetInteractRadius();
-            if (radius > 0f)
+            if (GetInteractType() is InteractType.Circle)
             {
-                Gizmos.DrawWireSphere(point, radius);
+                var radius = GetInteractRadius();
+                if (radius > 0f)
+                {
+                    Gizmos.DrawWireSphere(point, radius);
+                }
+                else
+                {
+                    Gizmos.DrawWireCube(point, Vector3.one * 0.2f);
+                }
             }
-            else
+            else if (GetInteractType() is InteractType.Box)
             {
-                Gizmos.DrawWireCube(point, Vector3.one * 0.2f);
+                var size = GetInteractSize();
+                Gizmos.DrawWireCube(point, size);
             }
         }
     }
 
+    public enum InteractType
+    {
+        Circle,
+        Box,
+    }
+    
     public enum SelectType
     {
         Oldest,

@@ -29,8 +29,7 @@ namespace Game.Scripts.Interactions
 
         #endregion
 
-        [SerializeField] private InteractTarget m_target;
-        
+        private InteractableObject m_target;
         private Collider2D m_collider2D;
         
         public Collider2D GetCollider()
@@ -38,13 +37,14 @@ namespace Game.Scripts.Interactions
             return m_collider2D;
         }
 
-        public InteractTarget GetTarget()
+        public InteractableObject GetTarget()
         {
             return m_target;
         }
         
         private void Awake()
         {
+            m_target = GetComponentInParent<InteractableObject>();
             m_collider2D = GetComponent<Collider2D>();
         }
 

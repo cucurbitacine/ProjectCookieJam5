@@ -6,16 +6,23 @@ namespace Game.Scripts.Interactions
     [DisallowMultipleComponent]
     public class ToggleState : MonoBehaviour
     {
-        [SerializeField] private bool toggle;
+        [SerializeField] private bool m_toggle;
         [Space]
         [SerializeField] private UnityEvent turnOn = new UnityEvent();
         [SerializeField] private UnityEvent turnOff = new UnityEvent();
 
-        public void Toggle(bool value)
+        public bool GetValue()
         {
-            if (toggle == value) return;
-            toggle = value;
-            if (toggle)
+            return m_toggle;
+        }
+        
+        public void SetValue(bool value)
+        {
+            if (m_toggle == value) return;
+
+            m_toggle = value;
+            
+            if (value)
             {
                 turnOn.Invoke();
             }
@@ -27,7 +34,7 @@ namespace Game.Scripts.Interactions
 
         public void Switch()
         {
-            Toggle(!toggle);
+            SetValue(!m_toggle);
         }
     }
 }

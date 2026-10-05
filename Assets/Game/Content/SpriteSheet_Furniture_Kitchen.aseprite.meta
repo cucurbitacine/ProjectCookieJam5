@@ -80,7 +80,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 1
+    mosaicPadding: 8
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -95,7 +95,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 1
+    mosaicPadding: 8
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -103,7 +103,7 @@ ScriptedImporter:
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639266500173097708
+  platformSettingsDirtyTick: 639267988302807787
   singleSpriteImportData:
   - name: 
     originalName: 
@@ -151,16 +151,16 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: Kitchen_Fridge
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 0
-      y: 1
-      width: 16
-      height: 32
+      y: 40
+      width: 32
+      height: 40
     spriteID: 6be4b6cd1501786418c2e2bd3b341f18
     spriteBone: []
     spriteOutline: []
@@ -172,16 +172,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Oven
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 16
-      y: 1
-      width: 16
-      height: 16
+      x: 32
+      y: 0
+      width: 32
+      height: 40
     spriteID: a9976bfa28e9304439c8c22c0a2fa054
     spriteBone: []
     spriteOutline: []
@@ -193,16 +193,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Hood
     originalName: 
-    pivot: {x: 0.5, y: 1}
-    alignment: 2
+    pivot: {x: 0.5, y: 0.8}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 16
-      y: 17
-      width: 16
-      height: 16
+      x: 32
+      y: 40
+      width: 32
+      height: 40
     spriteID: 5090d44f95b58da41aafe0e5f994ef5e
     spriteBone: []
     spriteOutline: []
@@ -214,16 +214,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Table_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 32
-      y: 1
-      width: 16
-      height: 16
+      x: 64
+      y: 0
+      width: 32
+      height: 40
     spriteID: 18dd8fe9da2f80f46917c619cc9e4988
     spriteBone: []
     spriteOutline: []
@@ -235,16 +235,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Table_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 48
-      y: 1
-      width: 16
-      height: 16
+      x: 96
+      y: 0
+      width: 32
+      height: 40
     spriteID: 5a88e859b3b3865418ecd153bc384a4d
     spriteBone: []
     spriteOutline: []
@@ -256,16 +256,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Table_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 64
-      y: 1
-      width: 16
-      height: 16
+      x: 128
+      y: 0
+      width: 32
+      height: 40
     spriteID: 5f885e3b51f258144b89ab9e758d4897
     spriteBone: []
     spriteOutline: []
@@ -277,16 +277,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Shelf_0
     originalName: 
-    pivot: {x: 0.5, y: 1}
-    alignment: 2
+    pivot: {x: 0.5, y: 0.8}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 32
-      y: 17
-      width: 16
-      height: 16
+      x: 64
+      y: 40
+      width: 32
+      height: 40
     spriteID: 50ee3858afef3804d9620579c91c0770
     spriteBone: []
     spriteOutline: []
@@ -298,16 +298,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Shelf_1
     originalName: 
-    pivot: {x: 0.5, y: 1}
-    alignment: 2
+    pivot: {x: 0.5, y: 0.8}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 48
-      y: 17
-      width: 16
-      height: 16
+      x: 96
+      y: 40
+      width: 32
+      height: 40
     spriteID: 12502182e5039524f9b7f92e1e1ccc91
     spriteBone: []
     spriteOutline: []
@@ -319,16 +319,16 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Kitchen_Sink
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 80
-      y: 1
-      width: 16
-      height: 32
+      x: 0
+      y: 0
+      width: 32
+      height: 40
     spriteID: 0b1ff95c85d6eee4ab4e5d7b0781d8bf
     spriteBone: []
     spriteOutline: []
@@ -356,10 +356,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
-        y: 0
-        width: 95
-        height: 32
+        x: 9
+        y: 8
+        width: 143
+        height: 66
       spriteId: 685b85032eebc5c4bb7293062be6b473
     linkedCells: []
     tileCells: []
@@ -405,5 +405,5 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 128, y: 64}
-  canvasSize: {x: 96, y: 32}
+  previousTextureSize: {x: 256, y: 128}
+  canvasSize: {x: 160, y: 80}

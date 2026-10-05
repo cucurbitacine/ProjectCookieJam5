@@ -1,6 +1,6 @@
 namespace Game.Scripts.Levels.Game.States
 {
-    public abstract class GameStateController
+    public abstract class GameStateBehaviour
     {
         public GameLevelController GameLevel { get; private set; }
         

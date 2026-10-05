@@ -14,6 +14,8 @@ namespace Game.Scripts.Levels.Game
         [Header("States")]
         [SerializeField] private GameState m_gameState;
         [SerializeField] private InitializeState m_initializeState = new InitializeState();
+        [SerializeField] private StartState m_startState = new StartState();
+        [SerializeField] private DayState m_dayState = new DayState();
         
         [Header("Settings")]
         [SerializeField] private LevelSceneAsset menuScene;
@@ -27,7 +29,7 @@ namespace Game.Scripts.Levels.Game
 
         private PawnPlayerController m_pawnPlayer;
         private GameState m_previousGameState;
-        private readonly Dictionary<GameState, GameStateController> m_states = new Dictionary<GameState, GameStateController>();
+        private readonly Dictionary<GameState, GameStateBehaviour> m_states = new Dictionary<GameState, GameStateBehaviour>();
 
         #endregion
 
@@ -51,9 +53,9 @@ namespace Game.Scripts.Levels.Game
             m_previousGameState = m_gameState;
             m_gameState = nextGameState;
             
-            OnGameStateChanged(m_previousGameState, m_gameState);
-            
             GameStateChanged?.Invoke(m_previousGameState, m_gameState);
+            
+            OnGameStateChanged(m_previousGameState, m_gameState);
         }
 
         [ContextMenu(nameof(ReturnMenu))]
@@ -71,18 +73,18 @@ namespace Game.Scripts.Levels.Game
 
         #region Private API
 
-        private void AddState(GameState gameState, GameStateController state)
+        private void AddState(GameState gameState, GameStateBehaviour state)
         {
             m_states[gameState] = state;
             state.Initialize(this);
         }
         
-        private bool TryGetState(GameState gameState, out GameStateController state)
+        private bool TryGetState(GameState gameState, out GameStateBehaviour state)
         {
             return m_states.TryGetValue(gameState, out state);
         }
         
-        private bool TryGetActualState(out GameStateController actualState)
+        private bool TryGetActualState(out GameStateBehaviour actualState)
         {
             return TryGetState(GetGameState(), out actualState);
         }
@@ -93,11 +95,15 @@ namespace Game.Scripts.Levels.Game
             
             if (TryGetState(previous, out var exitState))
             {
+                if (m_debugLog) Debug.Log($"[GameLevel] :: [Exit] [{exitState.GetType().Name}]");
+                
                 exitState.Exit();
             }
             
             if (TryGetState(next, out var enterState))
             {
+                if (m_debugLog) Debug.Log($"[GameLevel] :: [Enter] [{enterState.GetType().Name}]");
+                
                 enterState.Enter();
             }
         }
@@ -116,6 +122,8 @@ namespace Game.Scripts.Levels.Game
             context.Bind<GameLevelController>(this);
 
             AddState(GameState.Initialize, m_initializeState);
+            AddState(GameState.StartGame, m_startState);
+            AddState(GameState.Day, m_dayState);
         }
 
         protected override IEnumerator StartLevel()
