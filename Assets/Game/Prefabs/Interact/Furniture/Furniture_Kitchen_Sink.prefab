@@ -8,14 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.89243
+      objectReference: {fileID: 0}
+    - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0288
+      objectReference: {fileID: 0}
     - target: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Name
-      value: Furniture_Fridge
+      value: Furniture_Kitchen_Sink
       objectReference: {fileID: 0}
     - target: {fileID: 6366109480956113911, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2100000, guid: 6c161857a89eed448a9b4b07213c2052, type: 2}
+      objectReference: {fileID: -8263785245712081492, guid: e184a2c6c033c6d48b052d0fdce118c5, type: 3}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,10 +64,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7934938615053294618, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_todoStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 08abfbe49e63037419ffaa79c6c0207d, type: 2}
     - target: {fileID: 7934938615053294618, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_actionStats
       value: 
-      objectReference: {fileID: 11400000, guid: e2814d2e692f06749be2633df1b3c673, type: 2}
+      objectReference: {fileID: 11400000, guid: 08abfbe49e63037419ffaa79c6c0207d, type: 2}
     m_RemovedComponents:
     - {fileID: 7934938615053294618, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
     m_RemovedGameObjects: []
@@ -67,14 +87,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4701269564568942828}
+      addedObject: {fileID: 7318941572898074959}
   m_SourcePrefab: {fileID: 100100000, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
 --- !u!1 &5691861223080881527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
   m_PrefabInstance: {fileID: 8410137656527038599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4701269564568942828
+--- !u!114 &7318941572898074959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,12 +103,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5691861223080881527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44cb1aeca99d47e7b40f6f8495ff38fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 532c0182667440b9ab6ecf660056d157, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.FridgeObject
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.SinkObject
   m_hovered: 0
   m_selected: 0
   m_interacted: 0
-  m_actionStats: {fileID: 11400000, guid: e2814d2e692f06749be2633df1b3c673, type: 2}
-  m_sink: {fileID: 0}
-  m_foodFlag: 0
+  m_actionStats: {fileID: 11400000, guid: 08abfbe49e63037419ffaa79c6c0207d, type: 2}
+  m_dishFlag: 0
+  m_debuffComfortOnStartDay: 1

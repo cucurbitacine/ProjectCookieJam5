@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37674e468746432bafbd2ea9e52534cc, type: 3}
-  m_Name: Action_Dishwash
+  m_Name: Action_Bathroom_Toilet
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
-  m_difficulty: 5
-  m_actionPointCost: 1
-  m_willCost: 1
-  m_comfortCost: 0
+  m_oncePerGame: 0
+  m_oncePerDay: 1
+  m_difficulty: 2
+  m_actionPointCost: 0
+  m_willCost: 0
   m_willReward: 0
-  m_comfortReward: 0
+  m_comfortReward: 1

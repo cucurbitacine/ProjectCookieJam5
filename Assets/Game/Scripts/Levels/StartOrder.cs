@@ -1,4 +1,4 @@
-namespace Game.Scripts
+namespace Game.Scripts.Levels
 {
     public static class StartOrder
     {

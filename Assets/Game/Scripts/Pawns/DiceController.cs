@@ -81,10 +81,8 @@ namespace Game.Scripts.Pawns
         }
     } 
     
-    public class DiceProcess
+    public class DiceProcess : YieldProcess<DiceResult>
     {
-        public DiceResult result;
-
         private readonly DiceController dice;
         private readonly float debugProcessDuration;
         
@@ -93,20 +91,18 @@ namespace Game.Scripts.Pawns
             this.dice = dice;
             debugProcessDuration = duration;
         }
-
-        public Coroutine Await()
-        {
-            return dice.StartCoroutine(Launch());
-        }
-
-        private IEnumerator Launch()
+        
+        protected override IEnumerator OnProcess()
         {
             if (debugProcessDuration > 0f)
             {
                 yield return new WaitForSeconds(debugProcessDuration);
             }
-            
-            result = dice.GetRandomDiceValue();
+        }
+
+        protected override DiceResult GetResult()
+        {
+            return dice.GetRandomDiceValue();
         }
     }
 }

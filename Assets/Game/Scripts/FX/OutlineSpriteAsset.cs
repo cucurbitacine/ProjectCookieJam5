@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.FX
 {
     [CreateAssetMenu(menuName = "Create OutlineSpriteAsset", fileName = "OutlineSpriteAsset", order = 0)]
     public class OutlineSpriteAsset : ScriptableObject

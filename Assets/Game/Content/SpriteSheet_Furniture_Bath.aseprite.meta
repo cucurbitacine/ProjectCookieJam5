@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6afd9d8d12833c4c8e930fe775fd268
+guid: f0002922b3a811446b3456226c5c2bfa
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -80,7 +80,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 16
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -95,7 +95,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 16
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -103,7 +103,7 @@ ScriptedImporter:
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639266507879902199
+  platformSettingsDirtyTick: 639268985677782631
   singleSpriteImportData:
   - name: 
     originalName: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tilemap_Kitchen_Floor
+  - name: SpriteSheet_Furniture_Bath
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4954955, y: -0.27586207}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 64
-      height: 16
-    spriteID: 151592705dbe6a64ebd5ad394e6cf3bc
+      width: 111
+      height: 29
+    spriteID: d65ef6caa8c3d99479c09b9d23c8c245
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,104 +149,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Kitchen_Floor_Left
+  - name: Bath_Washing
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 16
-      height: 16
-    spriteID: 62eac3118a0a6734bb878717cf3bbb44
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Kitchen_Floor_Center
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 16
-      y: 0
-      width: 16
-      height: 16
-    spriteID: 84360b5dbe194e54bb0f07787a96e379
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Kitchen_Floor_Right
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 32
-      y: 0
-      width: 16
-      height: 16
-    spriteID: 080aadf1c384e0347b29123d10ae0901
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Kitchen_Floor_Cell
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 48
-      y: 0
-      width: 16
-      height: 16
-    spriteID: 069490764fd683648ae9891528472458
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  tileSetImportData:
-  - name: Layer 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 64
-      height: 16
-    spriteID: 670011a4d806eaa44a41a84cb68603b3
+      x: 7
+      y: 8
+      width: 32
+      height: 40
+    spriteID: d6437cca00d25fa4fa4895946cf3607f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -255,28 +170,92 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+  - name: Bath_Toilet
+    originalName: 
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 8
+      width: 32
+      height: 40
+    spriteID: 10df5ba4bc92d74449654aca9ae61cdb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Bath_Bath
+    originalName: 
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 8
+      width: 32
+      height: 40
+    spriteID: 25a6174bf29593d43b337a39f82a6430
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Bath_Sink
+    originalName: 
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 103
+      y: 8
+      width: 32
+      height: 40
+    spriteID: 7026560aa9ae7624188bc7dbc6406a1e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4287466680
+      value0: 3584315817
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Layer 1
-    layerFlags: 3
+    name: SpriteSheet_Furniture_Bath
+    layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tilemap_Kitchen_Floor
+    - name: SpriteSheet_Furniture_Bath
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 64
-        height: 16
-      spriteId: 670011a4d806eaa44a41a84cb68603b3
+        x: 9
+        y: 8
+        width: 111
+        height: 29
+      spriteId: d65ef6caa8c3d99479c09b9d23c8c245
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -321,5 +300,5 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 16}
-  canvasSize: {x: 64, y: 16}
+  previousTextureSize: {x: 256, y: 64}
+  canvasSize: {x: 128, y: 40}

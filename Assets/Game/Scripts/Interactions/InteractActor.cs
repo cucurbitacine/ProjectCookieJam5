@@ -25,6 +25,11 @@ namespace Game.Scripts.Interactions
         private readonly HashSet<InteractableObject> m_checking = new HashSet<InteractableObject>();
         private readonly List<InteractableObject> m_observed = new List<InteractableObject>();
 
+        public void Mute(bool mute)
+        {
+            enabled = !mute;
+        } 
+        
         public InteractType GetInteractType()
         {
             return m_interactType;
@@ -98,7 +103,7 @@ namespace Game.Scripts.Interactions
             if (InteractTrigger.Lookup(other, out var trigger))
             {
                 target = trigger.GetTarget();
-                return target.HasAccess(GetActor());
+                return target ? target.HasAccess(GetActor()) : false;
             }
 
             target = null;

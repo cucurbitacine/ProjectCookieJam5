@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Game.Scripts
+namespace Game.Scripts.FX
 {
     public class OutlineSprite : MonoBehaviour
     {

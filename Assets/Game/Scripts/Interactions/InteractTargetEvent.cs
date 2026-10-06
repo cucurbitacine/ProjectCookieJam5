@@ -25,7 +25,7 @@ namespace Game.Scripts.Interactions
                 m_onExit?.Invoke(actor);
             }
         }
-        
+
         private void Awake()
         {
             m_target = GetComponentInParent<InteractableObject>();
@@ -33,12 +33,18 @@ namespace Game.Scripts.Interactions
 
         private void OnEnable()
         {
-            m_target.StateChanged += OnStateChanged;
+            if (m_target)
+            {
+                m_target.StateChanged += OnStateChanged;
+            }
         }
-        
+
         private void OnDisable()
         {
-            m_target.StateChanged -= OnStateChanged;
+            if (m_target)
+            {
+                m_target.StateChanged -= OnStateChanged;
+            }
         }
     }
 }

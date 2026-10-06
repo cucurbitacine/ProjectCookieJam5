@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1244403259260602335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5477205022337522636}
-  - component: {fileID: 9188695021307728544}
-  m_Layer: 0
-  m_Name: InteractActor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5477205022337522636
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244403259260602335}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8352793777987680516}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9188695021307728544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244403259260602335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2674e50f808d764c8e93ba9c5e2e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.InteractAgent
-  m_interactType: 1
-  m_interactPoint: {x: 0.1, y: 0.75, z: 0}
-  m_interactRadius: 0.49
-  m_interactSize: {x: 0.73, y: 1.48}
-  m_interactFilter:
-    useTriggers: 1
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  m_useWorldSpace: 1
-  m_selectType: 1
-  m_selectedTarget: {fileID: 0}
-  m_oldestTarget: {fileID: 0}
-  m_newestTarget: {fileID: 0}
 --- !u!1 &4168887292022712827
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 646925990292266972}
-  - {fileID: 5477205022337522636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5503034146786178215
@@ -115,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.Scripts.Levels.Game.PawnPlayerController
   m_pawn: {fileID: 6100137285779043488}
   m_moveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_actor: {fileID: 9188695021307728544}
+  m_actor: {fileID: 0}
   m_actorOffset: {x: 0.1, y: 0.75, z: 0}
   m_interactAction: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1001 &8233732541853406779

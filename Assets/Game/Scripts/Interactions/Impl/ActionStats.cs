@@ -6,7 +6,9 @@ namespace Game.Scripts.Interactions.Impl
     [CreateAssetMenu(menuName = "Create ActionStats", fileName = "ActionStats", order = 0)]
     public class ActionStats : ScriptableObject
     {
-        [Header("Difficulty")]
+        [Header("Settings")]
+        [SerializeField] private bool m_oncePerGame = false;
+        [SerializeField] private bool m_oncePerDay = false;
         [Range(1, 20)] [SerializeField] private int m_difficulty = 1;
         
         [Header("Cost")]
@@ -16,6 +18,16 @@ namespace Game.Scripts.Interactions.Impl
         [Header("Reward")]
         [SerializeField] private int m_willReward = 0;
         [SerializeField] private int m_comfortReward = 0;
+        
+        public bool OncePerGame()
+        {
+            return m_oncePerGame;
+        }
+        
+        public bool OncePerDay()
+        {
+            return m_oncePerDay;
+        }
         
         public int GetDifficulty()
         {

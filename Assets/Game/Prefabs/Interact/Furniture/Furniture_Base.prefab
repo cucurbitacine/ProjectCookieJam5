@@ -352,7 +352,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6646513628397240919}
   - component: {fileID: 2647320960024790720}
-  - component: {fileID: 7934938615053294618}
   m_Layer: 0
   m_Name: Furniture_Base
   m_TagString: Untagged
@@ -393,22 +392,6 @@ SortingGroup:
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
---- !u!114 &7934938615053294618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200523661895026160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e4f7ed2c634a199eb47c5311f3e3c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoInteractTarget
-  m_hovered: 0
-  m_selected: 0
-  m_interacted: 0
-  m_actionStats: {fileID: 0}
 --- !u!1 &4252596282133610865
 GameObject:
   m_ObjectHideFlags: 0

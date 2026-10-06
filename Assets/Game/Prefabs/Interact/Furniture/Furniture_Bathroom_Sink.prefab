@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1512779506927227331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8932328
+      objectReference: {fileID: 0}
+    - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0326
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Name
+      value: Furniture_Bathroom_Sink
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366109480956113911, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2170863488146378425, guid: f0002922b3a811446b3456226c5c2bfa, type: 3}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3511466789993954420}
+  m_SourcePrefab: {fileID: 100100000, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+--- !u!1 &3365661106176726067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+  m_PrefabInstance: {fileID: 1512779506927227331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3511466789993954420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365661106176726067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4157db3aa60452c9cbaaac35df00cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.BathSinkObject
+  m_hovered: 0
+  m_selected: 0
+  m_interacted: 0
+  m_actionStats: {fileID: 11400000, guid: 6ad903564564796418ae81f8d2f26e88, type: 2}

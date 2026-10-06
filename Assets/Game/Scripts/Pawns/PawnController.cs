@@ -1,4 +1,4 @@
-using System;
+using Game.Scripts.Interactions;
 using UnityEngine;
 
 namespace Game.Scripts.Pawns
@@ -8,12 +8,14 @@ namespace Game.Scripts.Pawns
     [RequireComponent(typeof(PawnRotation))]
     [RequireComponent(typeof(PawnStats))]
     [RequireComponent(typeof(DiceController))]
+    [RequireComponent(typeof(InteractActor))]
     public class PawnController : MonoBehaviour
     {
         private PawnMovement m_movement;
         private PawnRotation m_rotation;
         private PawnStats m_stats;
         private DiceController m_dice;
+        private InteractActor m_actor;
 
         public PawnMovement GetMovement()
         {
@@ -35,12 +37,25 @@ namespace Game.Scripts.Pawns
             return m_dice;
         }
         
+        public InteractActor GetActor()
+        {
+            return m_actor;
+        }
+        
+        public void Mute(bool mute)
+        {
+            GetMovement().Mute(mute);
+            GetActor().Mute(mute);
+            GetRotation().Mute(mute);
+        }
+        
         private void SetupPawn()
         {
             m_movement = GetComponent<PawnMovement>();
             m_rotation = GetComponent<PawnRotation>();
             m_stats = GetComponent<PawnStats>();
             m_dice = GetComponent<DiceController>();
+            m_actor = GetComponent<InteractActor>();
         }
 
         private void UpdatePawn(float deltaTime)
@@ -66,6 +81,4 @@ namespace Game.Scripts.Pawns
             UpdatePawn(Time.deltaTime);
         }
     }
-
-
 }

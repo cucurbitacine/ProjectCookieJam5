@@ -7,6 +7,11 @@ namespace Game.Scripts.Pawns
         [SerializeField] private float m_direction = 1f;
         [SerializeField] private Transform m_targetRotation;
 
+        public void Mute(bool mute)
+        {
+            enabled = !mute;
+        }
+        
         public float GetDirection()
         {
             return m_direction;

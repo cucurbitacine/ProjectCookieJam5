@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class OvenObject : ActionObject
+    public class OvenObject : DiceActionObject
     {
-        //[Header("Oven")]
-        
         private FridgeObject m_fridge;
         private SinkObject m_sink;
 
@@ -28,16 +26,20 @@ namespace Game.Scripts.Interactions.Impl
             var sink = GetSink();
             if (sink && sink.HasDishFlag()) return false;
             
-            return true;
+            return base.HasAccess(actor);
         }
 
         protected override void OnSuccess(PawnController pawn)
         {
+            base.OnSuccess(pawn);
+            
             GetFridge()?.SetFoodFlag(true);
         }
 
         protected override void OnFailure(PawnController pawn)
         {
+            base.OnFailure(pawn);
+            
             GetSink()?.SetDishFlag(true);
         }
 

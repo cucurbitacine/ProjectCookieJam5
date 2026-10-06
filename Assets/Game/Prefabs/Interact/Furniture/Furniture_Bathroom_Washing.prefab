@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8410137656527038599
+--- !u!1001 &6525924970262699209
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,21 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.95
-      objectReference: {fileID: 0}
     - target: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Name
-      value: Furniture_Oven
+      value: Furniture_Bathroom_Washing
       objectReference: {fileID: 0}
     - target: {fileID: 6366109480956113911, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -182230049752686010, guid: e184a2c6c033c6d48b052d0fdce118c5, type: 3}
+      objectReference: {fileID: 2775641296132792284, guid: f0002922b3a811446b3456226c5c2bfa, type: 3}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.25
       objectReference: {fileID: 0}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38,15 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62,45 +58,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Size.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7899520122758156123, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Offset.y
-      value: 0.45
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7934938615053294618, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
-      propertyPath: m_actionStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 1b2a63a13e21023469317e5f5665ae77, type: 2}
-    m_RemovedComponents:
-    - {fileID: 7934938615053294618, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2112200568364889666}
+      addedObject: {fileID: 9120096613165904851}
   m_SourcePrefab: {fileID: 100100000, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
---- !u!1 &5691861223080881527 stripped
+--- !u!1 &6979449316179728697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
-  m_PrefabInstance: {fileID: 8410137656527038599}
+  m_PrefabInstance: {fileID: 6525924970262699209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2112200568364889666
+--- !u!114 &9120096613165904851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5691861223080881527}
+  m_GameObject: {fileID: 6979449316179728697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f92ce7eb9574a0b8a6e37eca4a20c23, type: 3}
+  m_Script: {fileID: 11500000, guid: e15d8ccd9d5a42ca8f195f8a02a2c1da, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.OvenObject
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.WashingObject
   m_hovered: 0
   m_selected: 0
   m_interacted: 0
-  m_actionStats: {fileID: 11400000, guid: 1b2a63a13e21023469317e5f5665ae77, type: 2}
-  m_fridge: {fileID: 0}
-  m_sink: {fileID: 0}
+  m_actionStats: {fileID: 11400000, guid: 51b50048862220a4f9e465d5fd10988f, type: 2}
+  m_debuffComfortOnStartDay: 1

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class FridgeObject : ActionObject
+    public class FridgeObject : DiceActionObject
     {
         [Header("Fridge")]
         [SerializeField] private bool m_foodFlag;
@@ -30,11 +30,13 @@ namespace Game.Scripts.Interactions.Impl
             var sink = GetSink();
             if (sink && sink.HasDishFlag()) return false;
             
-            return HasFoodFlag();
+            return HasFoodFlag() && base.HasAccess(actor);
         }
         
         protected override void OnAttempt(PawnController pawn)
         {
+            base.OnAttempt(pawn);
+            
             SetFoodFlag(false);
             
             GetSink()?.SetDishFlag(true);

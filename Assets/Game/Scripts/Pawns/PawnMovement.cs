@@ -29,6 +29,17 @@ namespace Game.Scripts.Pawns
         {
             m_move = Mathf.Clamp(move, -1f, 1f);
         }
+
+        public void Mute(bool mute)
+        {
+            if (mute)
+            {
+                GetBody().linearVelocity = Vector2.zero;
+                GetBody().angularVelocity = 0f;
+            }
+            
+            enabled = !mute;
+        }
         
         private void SetupBody()
         {

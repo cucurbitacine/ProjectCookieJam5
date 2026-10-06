@@ -15,7 +15,6 @@ namespace Game.Scripts.Levels.Game
         [SerializeField] private InputActionReference m_moveAction;
         
         [Header("Interact")]
-        [SerializeField] private InteractActor m_actor;
         [SerializeField] private Vector3 m_actorOffset;
         [SerializeField] private InputActionReference m_interactAction;
         
@@ -35,7 +34,7 @@ namespace Game.Scripts.Levels.Game
         private void OnInteract(InputAction.CallbackContext context)
         {
             var interact = context.ReadValueAsButton();
-            m_actor.Interact(interact);
+            GetPawn().GetActor().Interact(interact);
         }
         
         private Vector3 GetInteractPoint()
@@ -51,7 +50,7 @@ namespace Game.Scripts.Levels.Game
         private void UpdateInteraction()
         {
             var interactPoint = GetInteractPoint();
-            m_actor.SetInteractPoint(interactPoint);
+            GetPawn().GetActor().SetInteractPoint(interactPoint);
         }
         
         public override void ResolveAll(LevelContext context)
