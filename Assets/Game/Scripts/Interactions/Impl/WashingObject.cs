@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class WashingObject : DiceActionObject
+    public class WashingObject : ActionObject
     {
         [Header("Washing")]
         [Min(0)]

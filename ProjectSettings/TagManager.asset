@@ -50,7 +50,7 @@ TagManager:
   - name: Shadows
     uniqueID: 1065543805
     locked: 0
-  - name: Furniture
+  - name: Interactable
     uniqueID: 2060299767
     locked: 0
   - name: Default
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2739712299
+    locked: 0
+  - name: UI
+    uniqueID: 61195879
     locked: 0
   m_RenderingLayers:
   - Default

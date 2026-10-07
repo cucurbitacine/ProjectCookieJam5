@@ -47,6 +47,8 @@ namespace Game.Scripts.Pawns
             GetMovement().Mute(mute);
             GetActor().Mute(mute);
             GetRotation().Mute(mute);
+
+            enabled = !mute;
         }
         
         private void SetupPawn()

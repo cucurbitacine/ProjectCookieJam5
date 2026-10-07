@@ -12,7 +12,7 @@ namespace Game.Scripts.Levels.Game.States
         [SerializeField] private PawnStatsData m_statsOnStartDay;
         
         private PawnPlayerController m_player;
-        private DiceActionObject[] m_actionObjects;
+        private ActionObject[] m_actionObjects;
         
         public override void Enter()
         {
@@ -38,7 +38,7 @@ namespace Game.Scripts.Levels.Game.States
         {
             m_player = gameLevel.GetPlayer();
 
-            m_actionObjects = Object.FindObjectsByType<DiceActionObject>();
+            m_actionObjects = Object.FindObjectsByType<ActionObject>();
         }
     }
 }

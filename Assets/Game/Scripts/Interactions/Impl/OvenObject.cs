@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class OvenObject : DiceActionObject
+    public class OvenObject : ActionObject
     {
         private FridgeObject m_fridge;
         private SinkObject m_sink;

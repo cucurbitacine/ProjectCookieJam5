@@ -12,7 +12,7 @@ namespace Game.Scripts.Interactions
         
         private InteractableObject m_target;
         
-        private void OnStateChanged(GameObject actor, InteractState state, bool value)
+        private void OnInteractStateChanged(GameObject actor, InteractState state, bool value)
         {
             if (m_interactState != state) return;
             
@@ -35,7 +35,7 @@ namespace Game.Scripts.Interactions
         {
             if (m_target)
             {
-                m_target.StateChanged += OnStateChanged;
+                m_target.InteractStateChanged += OnInteractStateChanged;
             }
         }
 
@@ -43,7 +43,7 @@ namespace Game.Scripts.Interactions
         {
             if (m_target)
             {
-                m_target.StateChanged -= OnStateChanged;
+                m_target.InteractStateChanged -= OnInteractStateChanged;
             }
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class FridgeObject : DiceActionObject
+    public class FridgeObject : ActionObject
     {
         [Header("Fridge")]
         [SerializeField] private bool m_foodFlag;

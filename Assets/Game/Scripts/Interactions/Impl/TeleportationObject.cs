@@ -51,7 +51,7 @@ namespace Game.Scripts.Interactions.Impl
             StartCoroutine(Teleporting(pawn));
         }
         
-        private void Awake()
+        protected virtual void Awake()
         {
             m_teleportManager = FindAnyObjectByType<TeleportationManager>();
         }

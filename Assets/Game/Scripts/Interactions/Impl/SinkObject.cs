@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Interactions.Impl
 {
-    public class SinkObject : DiceActionObject
+    public class SinkObject : ActionObject
     {
         [Header("Sink")]
         [SerializeField] private bool m_dishFlag;

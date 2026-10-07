@@ -6,6 +6,8 @@ namespace Game.Scripts.Interactions
     [DisallowMultipleComponent]
     public class InteractableObject : MonoBehaviour
     {
+        [SerializeField] private InteractableObjectAsset m_interactPreset;
+        
         [Header("Interactable")]
         [SerializeField] private bool m_hovered;
         [SerializeField] private bool m_selected;
@@ -15,8 +17,23 @@ namespace Game.Scripts.Interactions
         public bool IsSelected => m_selected;
         public bool IsInteracted => m_interacted;
         
-        public Action<GameObject, InteractState, bool> StateChanged;
+        public Action<GameObject, InteractState, bool> InteractStateChanged;
 
+        public InteractableObjectAsset GetInteractPreset()
+        {
+            return m_interactPreset;
+        }
+        
+        public virtual string GetInteractName()
+        {
+            return GetInteractPreset().GetInteractName();
+        }
+        
+        public virtual string GetInteractDescription()
+        {
+            return GetInteractPreset().GetInteractDescription();
+        }
+        
         public virtual bool HasAccess(GameObject actor)
         {
             return true;
@@ -28,7 +45,7 @@ namespace Game.Scripts.Interactions
 
             OnHover(actor, value);
             
-            StateChanged?.Invoke(actor, InteractState.Hover, value);
+            InteractStateChanged?.Invoke(actor, InteractState.Hover, value);
         }
 
         public void Select(GameObject actor, bool value)
@@ -37,7 +54,7 @@ namespace Game.Scripts.Interactions
             
             OnSelect(actor, value);
             
-            StateChanged?.Invoke(actor, InteractState.Select, value);
+            InteractStateChanged?.Invoke(actor, InteractState.Select, value);
         }
 
         public void Interact(GameObject actor, bool value)
@@ -46,7 +63,7 @@ namespace Game.Scripts.Interactions
             
             OnInteract(actor, value);
             
-            StateChanged?.Invoke(actor, InteractState.Interact, value);
+            InteractStateChanged?.Invoke(actor, InteractState.Interact, value);
         }
         
         protected virtual void OnHover(GameObject actor, bool value) { }
