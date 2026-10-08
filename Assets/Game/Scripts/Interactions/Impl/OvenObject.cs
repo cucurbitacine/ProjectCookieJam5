@@ -1,5 +1,6 @@
 using Game.Scripts.Pawns;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Interactions.Impl
 {
@@ -7,7 +8,7 @@ namespace Game.Scripts.Interactions.Impl
     {
         private FridgeObject m_fridge;
         private SinkObject m_sink;
-
+        
         public FridgeObject GetFridge()
         {
             return m_fridge;

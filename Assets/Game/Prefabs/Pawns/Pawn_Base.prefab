@@ -282,7 +282,9 @@ MonoBehaviour:
   m_debugRandomize: 1
   m_debugProcessDuration: 0.1
   m_debugDiceValueClear: 20
+  m_onlyNextDiceBonus: 0
   m_debugDiceValueResult: 0
+  m_diceProcessPrefab: {fileID: 5021234308271221307, guid: 86d2d148063df7b4fb36e5e975578e5d, type: 3}
 --- !u!114 &594558389103314323
 MonoBehaviour:
   m_ObjectHideFlags: 0

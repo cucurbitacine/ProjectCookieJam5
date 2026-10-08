@@ -1,5 +1,6 @@
 using Game.Scripts.Pawns;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Interactions.Impl
 {
@@ -9,6 +10,8 @@ namespace Game.Scripts.Interactions.Impl
         [SerializeField] private bool m_dishFlag;
         [Min(0)]
         [SerializeField] private int m_debuffComfortOnStartDay;
+        [Space]
+        [SerializeField] private UnityEvent m_onDishFlag = new UnityEvent();
         
         public bool HasDishFlag()
         {
@@ -18,6 +21,11 @@ namespace Game.Scripts.Interactions.Impl
         public void SetDishFlag(bool flag)
         {
             m_dishFlag = flag;
+
+            if (m_dishFlag)
+            {
+                m_onDishFlag.Invoke();
+            }
         }
         
         public override bool HasAccess(GameObject actor)

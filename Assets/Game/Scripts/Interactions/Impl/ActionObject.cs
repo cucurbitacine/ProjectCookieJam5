@@ -25,24 +25,35 @@ namespace Game.Scripts.Interactions.Impl
             return m_actionStats;
         }
 
+        public bool HasDonePerDayFlag()
+        {
+            return m_donePerDay;
+        }
+        
+        public bool HasDonePerGameFlag()
+        {
+            return m_donePerGame;
+        }
+        
         public bool HasDoneFlag()
         {
-            return m_donePerGame || m_donePerDay;
+            return HasDonePerDayFlag() || HasDonePerGameFlag();
         }
 
         public override bool HasAccess(GameObject actor)
         {
             if (HasDoneFlag()) return false;
 
+            /*
             if (actor.TryGetComponent(out PawnController pawn))
             {
-                var pawnStats = pawn.GetStats();
                 var actionStats = GetActionPreset();
-                if (!actionStats.CanCharge(pawnStats))
+                if (!actionStats.CanCharge(pawn))
                 {
                     return false;
                 }
             }
+            */
             
             return base.HasAccess(actor);
         }
@@ -50,31 +61,33 @@ namespace Game.Scripts.Interactions.Impl
         private IEnumerator Interacting(PawnController pawn)
         {
             var actionStats = GetActionPreset();
-            var pawnStats = pawn.GetStats();
             
-            if (actionStats && !HasDoneFlag() && actionStats.CanCharge(pawnStats))
+            if (actionStats && !HasDoneFlag() && actionStats.CanCharge(pawn))
             {
-                if (actionStats.OncePerDay()) m_donePerDay = true;
-                
-                actionStats.Charge(pawnStats);
-                
-                OnAttempt(pawn);
-
-                var diceProcess = pawn.GetDice().CreateDiceProcess();
+                var diceProcess = pawn.GetDice().CreateDiceProcess(actionStats);
                 yield return StartCoroutine(diceProcess.Process());
-                var diceResult = diceProcess.Result;
+
+                if (!diceProcess.Canceled)
+                {
+                    if (actionStats.OncePerDay()) m_donePerDay = true;
+                    
+                    actionStats.Charge(pawn);
                 
-                if (diceResult.Evaluate(actionStats.GetDifficulty()))
-                {
-                    if (actionStats.OncePerGame()) m_donePerGame = true;
+                    OnAttempt(pawn);
                     
-                    actionStats.Reward(pawnStats);
+                    var diceResult = diceProcess.Result;
+                    if (diceResult.Evaluate(actionStats.GetDifficulty()))
+                    {
+                        if (actionStats.OncePerGame()) m_donePerGame = true;
                     
-                    OnSuccess(pawn);
-                }
-                else
-                {
-                    OnFailure(pawn);
+                        actionStats.Reward(pawn);
+                    
+                        OnSuccess(pawn);
+                    }
+                    else
+                    {
+                        OnFailure(pawn);
+                    }   
                 }
             }
             

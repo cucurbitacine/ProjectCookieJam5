@@ -8,14 +8,29 @@ namespace Game.Scripts.Pawns
     {
         [SerializeField] private PawnStatsData m_statsData;
 
-        public PawnStatsData GetStats()
+        public Action<StatsType, int, int> StatsChanged;
+        
+        public PawnStatsData GetStatsData()
         {
             return m_statsData;
         }
         
         public void SetStats(PawnStatsData stats)
         {
+            var prevData = m_statsData;
             m_statsData = stats;
+
+            CheckChange(StatsType.ActionPoints, prevData.ActionPoints, stats.ActionPoints);
+            CheckChange(StatsType.Will, prevData.Will, stats.Will);
+            CheckChange(StatsType.Comfort, prevData.Comfort, stats.Comfort);
+        }
+
+        private void CheckChange(StatsType type, int prev, int next)
+        {
+            if (prev != next)
+            {
+                StatsChanged?.Invoke(type, prev, next);
+            }
         }
     }
 
@@ -26,6 +41,13 @@ namespace Game.Scripts.Pawns
         public int Will;
         public int Comfort;
     }
+
+    public enum StatsType
+    {
+        ActionPoints,
+        Will,
+        Comfort,
+    }
     
     public static class PawnStatsExtensions
     {
@@ -33,12 +55,12 @@ namespace Game.Scripts.Pawns
         
         public static int GetActionPoints(this PawnStats pawn)
         {
-            return pawn.GetStats().ActionPoints;
+            return pawn.GetStatsData().ActionPoints;
         }
         
         public static void SetActionPoints(this PawnStats pawn, int amount)
         {
-            var stats = pawn.GetStats();
+            var stats = pawn.GetStatsData();
             stats.ActionPoints = amount;
             pawn.SetStats(stats);
         }
@@ -57,12 +79,12 @@ namespace Game.Scripts.Pawns
         
         public static int GetWill(this PawnStats pawn)
         {
-            return pawn.GetStats().Will;
+            return pawn.GetStatsData().Will;
         }
         
         public static void SetWill(this PawnStats pawn, int amount)
         {
-            var stats = pawn.GetStats();
+            var stats = pawn.GetStatsData();
             stats.Will = amount;
             pawn.SetStats(stats);
         }
@@ -81,12 +103,12 @@ namespace Game.Scripts.Pawns
         
         public static int GetComfort(this PawnStats pawn)
         {
-            return pawn.GetStats().Comfort;
+            return pawn.GetStatsData().Comfort;
         }
         
         public static void SetComfort(this PawnStats pawn, int amount)
         {
-            var stats = pawn.GetStats();
+            var stats = pawn.GetStatsData();
             stats.Comfort = amount;
             pawn.SetStats(stats);
         }

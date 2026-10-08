@@ -359,6 +359,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+  - name: Kitchen_Table_Main
+    originalName: 
+    pivot: {x: 0.5, y: 0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 40
+      width: 32
+      height: 40
+    spriteID: 7e0707d76611b164eb6cdc7747bd48cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -379,7 +400,7 @@ ScriptedImporter:
       cellRect:
         x: 9
         y: 8
-        width: 143
+        width: 181
         height: 66
       spriteId: 685b85032eebc5c4bb7293062be6b473
     linkedCells: []
@@ -427,4 +448,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   previousTextureSize: {x: 256, y: 128}
-  canvasSize: {x: 160, y: 80}
+  canvasSize: {x: 192, y: 80}

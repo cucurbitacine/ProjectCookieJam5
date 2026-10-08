@@ -45,13 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4740a819101b4bdaaff83982d5713620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Scripts.Levels.Game.GameLevelController
+  m_currentDay: 0
   m_gameState: 0
   m_dayState:
+    m_keepActionPoints: 0
+    m_keepWill: 0
+    m_keepComfort: 0
     m_statsOnStartDay:
       ActionPoints: 3
       Will: 4
       Comfort: 0
-    m_sink: {fileID: 0}
+    m_bedObject: {fileID: 0}
   menuScene: {fileID: 11400000, guid: 73beee8e15ffedb4eb8d071ba3576b54, type: 2}
   m_debugLog: 0
 --- !u!114 &2653467019354935647
@@ -66,5 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250de526947b48c296579714ee10d904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.Scripts.Levels.TeleportationManager
-  m_durationIn: 0.6
-  m_durationOut: 0.4
+  m_durationIn: 0.4
+  m_durationOut: 0.25

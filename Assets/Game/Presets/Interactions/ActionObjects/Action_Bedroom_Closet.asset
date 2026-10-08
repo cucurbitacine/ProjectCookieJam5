@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37674e468746432bafbd2ea9e52534cc, type: 3}
+  m_Name: Action_Bedroom_Closet
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
+  m_interactName: Organize the closet
+  m_interactDescription: Every time I open it, I dream of ending up in... Hmm, never mind... It's a millennial thing
+  m_difficulty: 15
+  m_actionCost:
+    ActionPoints: 1
+    Will: 3
+  m_actionReward:
+    Will: 0
+    Comfort: 0
+    NextDice: 0
+  m_oncePerGame: 1
+  m_oncePerDay: 1
+  m_resultSuccess: 
+  m_resultFailure: 

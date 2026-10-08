@@ -15,9 +15,14 @@ MonoBehaviour:
   m_interactName: Take the bath
   m_interactDescription: Mmm... Such warm water with bubbles... Where's my rubber duck?
   m_difficulty: 5
-  m_actionPointCost: 1
-  m_willCost: 0
-  m_willReward: 0
-  m_comfortReward: 2
+  m_actionCost:
+    ActionPoints: 1
+    Will: 0
+  m_actionReward:
+    Will: 0
+    Comfort: 2
+    NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
+  m_resultSuccess: 
+  m_resultFailure: 

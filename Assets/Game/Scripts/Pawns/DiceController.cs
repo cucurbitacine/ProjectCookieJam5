@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Scripts.Interactions.Impl;
 using UnityEngine;
 
 namespace Game.Scripts.Pawns
@@ -16,25 +17,11 @@ namespace Game.Scripts.Pawns
         [Range(1, 20)] [SerializeField] private int m_debugDiceValueClear = 20;
         [SerializeField] private int m_onlyNextDiceBonus;
         [SerializeField] private int m_debugDiceValueResult;
+
+        [Space]
+        [SerializeField] private DiceProcessController m_diceProcessPrefab;
         
-        public float EvaluateChance(int difficulty)
-        {
-            var bonus = 0;
-            var pawn = GetPawn();
-            if (pawn) bonus += pawn.GetStats().GetComfort();
-            bonus += m_onlyNextDiceBonus;
 
-            var minValue = 2 + bonus;
-            var maxValue = 19 + bonus;
-            var rangeValue = maxValue - minValue;
-
-            var chanceCrit = 1f / 20f;
-            var chanceNormal = difficulty <= minValue ? 1f :
-                difficulty > maxValue ? 0f :
-                (((float)maxValue - difficulty) / rangeValue);
-
-            return 18f / 20f * chanceNormal + chanceCrit;
-        }
         
         public PawnController GetPawn()
         {
@@ -46,29 +33,50 @@ namespace Game.Scripts.Pawns
             m_pawn = pawn;
         }
         
-        public DiceProcess CreateDiceProcess()
+        public DiceProcess CreateDiceProcess(ActionObjectAsset action)
         {
-            return new DiceProcess(this, m_debugProcessDuration);
+            return Instantiate(m_diceProcessPrefab).LaunchProcess(this, action);
         }
 
         public void AddNextDiceBonus(int amount)
         {
             m_onlyNextDiceBonus = amount;
         }
-        
-        public DiceResult GetRandomDiceValue()
+
+        public Dictionary<DiceBonus, int> GetBonuses()
         {
-            var diceResult = new DiceResult(GetRandomValue());
-            
+            var bonuses = new Dictionary<DiceBonus, int>();
+
             var pawn = GetPawn();
             if (pawn)
             {
-                diceResult.AddBonus(DiceBonus.Comfort, pawn.GetStats().GetComfort());
+                var comfortBonus = pawn.GetStats().GetComfort();
+                if (comfortBonus != 0)
+                {
+                    bonuses[DiceBonus.Comfort] = comfortBonus;
+                }
             }
 
             if (m_onlyNextDiceBonus != 0)
             {
-                diceResult.AddBonus(DiceBonus.NextDiceBonus, m_onlyNextDiceBonus);
+                bonuses[DiceBonus.NextDiceBonus] = m_onlyNextDiceBonus;
+            }
+
+            return bonuses;
+        }
+        
+        public DiceResult GenerateDiceResult()
+        {
+            var diceResult = new DiceResult(GetRandomValue());
+
+            var bonuses = GetBonuses();
+            foreach (var bonus in bonuses)
+            {
+                diceResult.AddBonus(bonus.Key, bonus.Value);
+            }
+
+            if (bonuses.ContainsKey(DiceBonus.NextDiceBonus))
+            {
                 m_onlyNextDiceBonus = 0;
             }
             
@@ -130,8 +138,8 @@ namespace Game.Scripts.Pawns
             }
 
             var success = Result >= difficulty;
-            
-            if (Bonus.Count > 0)
+
+            if (Bonus.Count(b => b.Value != 0) > 0)
             {
                 var bonus = string.Join(" + ", Bonus.Where(b => b.Value != 0).Select(b => $"{b.Key}({b.Value})"));
                 Debug.Log($"[{Clear} + {bonus} = {Result}] >= {difficulty} [{(success ? "Success" : "Failure")}]");
@@ -143,32 +151,27 @@ namespace Game.Scripts.Pawns
             
             return success;
         }
-    } 
-    
-    public class DiceProcess : YieldProcess<DiceResult>
-    {
-        public readonly DiceController Dice;
-        private readonly float debugProcessDuration;
         
-        public DiceProcess(DiceController dice, float duration = -1f)
+        public static float EvaluateChance(int difficulty, int bonus)
         {
-            Dice = dice;
-            debugProcessDuration = duration;
-        }
-        
-        protected override IEnumerator OnProcess()
-        {
-            if (debugProcessDuration > 0f)
-            {
-                Dice.GetPawn().Mute(true);
-                yield return new WaitForSeconds(debugProcessDuration);
-                Dice.GetPawn().Mute(false);
-            }
-        }
+            /*
+            var bonus = 0;
+            var pawn = GetPawn();
+            if (pawn) bonus += pawn.GetStats().GetComfort();
+            bonus += m_onlyNextDiceBonus;
+            */
+            //var bonus = GetBonuses().Sum(b => b.Value);
+            
+            var minValue = 2 + bonus;
+            var maxValue = 19 + bonus;
+            var rangeValue = maxValue - minValue;
 
-        protected override DiceResult GetResult()
-        {
-            return Dice.GetRandomDiceValue();
+            var chanceCrit = 1f / 20f;
+            var chanceNormal = difficulty <= minValue ? 1f :
+                difficulty > maxValue ? 0f :
+                (((float)maxValue - difficulty) / rangeValue);
+
+            return 18f / 20f * chanceNormal + chanceCrit;
         }
-    }
+    } 
 }

@@ -14,7 +14,7 @@ namespace Game.Scripts.Interactions.Impl
         {
             base.OnDayStart(pawn);
 
-            if (!HasDoneFlag())
+            if (!HasDonePerGameFlag())
             {
                 pawn.GetStats().AddComfort(-m_debuffComfortOnStartDay);
             }

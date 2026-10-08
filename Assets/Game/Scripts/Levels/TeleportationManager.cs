@@ -43,7 +43,7 @@ namespace Game.Scripts.Levels
             TimeOut = Mathf.Max(0f, timeOut);
         }
         
-        public override IEnumerator Process()
+        protected override IEnumerator OnProcess()
         {
             Pawn.Mute(true);
 

@@ -15,9 +15,14 @@ MonoBehaviour:
   m_interactName: Water the flowers
   m_interactDescription: 'Roses are red, violets are blue, rate my game, thank you! '
   m_difficulty: 2
-  m_actionPointCost: 0
-  m_willCost: 1
-  m_willReward: 0
-  m_comfortReward: 1
+  m_actionCost:
+    ActionPoints: 0
+    Will: 1
+  m_actionReward:
+    Will: 0
+    Comfort: 1
+    NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
+  m_resultSuccess: 
+  m_resultFailure: 

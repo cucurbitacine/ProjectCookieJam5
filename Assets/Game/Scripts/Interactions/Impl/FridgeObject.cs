@@ -1,5 +1,6 @@
 using Game.Scripts.Pawns;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Interactions.Impl
 {
@@ -7,6 +8,8 @@ namespace Game.Scripts.Interactions.Impl
     {
         [Header("Fridge")]
         [SerializeField] private bool m_foodFlag;
+        [Space]
+        [SerializeField] private UnityEvent m_onFoodFlag = new UnityEvent();
         
         private SinkObject m_sink;
         
@@ -18,6 +21,11 @@ namespace Game.Scripts.Interactions.Impl
         public void SetFoodFlag(bool flag)
         {
             m_foodFlag = flag;
+
+            if (m_foodFlag)
+            {
+                m_onFoodFlag.Invoke();   
+            }
         }
 
         public SinkObject GetSink()

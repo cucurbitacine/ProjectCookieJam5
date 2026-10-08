@@ -108,5 +108,30 @@ MonoBehaviour:
   m_interacted: 0
   m_donePerGame: 0
   m_donePerDay: 0
-  m_actionStats: {fileID: 11400000, guid: e2814d2e692f06749be2633df1b3c673, type: 2}
   m_foodFlag: 0
+  m_onFoodFlag:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6815867597623519798}
+        m_TargetAssemblyTypeName: Game.Scripts.FX.DoPunchEffect, Game
+        m_MethodName: LaunchEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6815867597623519798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3035457846127870641, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+  m_PrefabInstance: {fileID: 8410137656527038599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e737aa6506d644da50928873d496fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.FX.DoPunchEffect

@@ -9,6 +9,16 @@ namespace Game.Scripts.FX
         [SerializeField] private MoveSettingsAsset moveSettings;
         [SerializeField] private bool useWorldSpace;
         
+        [ContextMenu(nameof(LaunchEffect))]
+        public void LaunchEffect(MoveSettingsAsset moveAsset)
+        {
+            moveSettings = moveAsset;
+            
+            KillTweener();
+            
+            LaunchEffect();
+        }
+        
         public override Tweener CreateTweener(Transform target)
         {
             var endValue = transform.TransformPoint(moveSettings.endValue);

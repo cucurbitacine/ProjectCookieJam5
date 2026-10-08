@@ -4,21 +4,41 @@ namespace Game.Scripts
 {
     public abstract class YieldProcess
     {
-        public abstract IEnumerator Process();
+        public bool InProgress { get; private set; }
+        public bool Done { get; private set; }
+        public bool Canceled { get; private set; }
+
+        public IEnumerator Process()
+        {
+            InProgress = true;
+            Done = false;
+            
+            yield return OnProcess();
+            
+            InProgress = false;
+            Done = true;
+        }
+
+        public void Cancel()
+        {
+            Canceled = true;
+        }
+        
+        protected abstract IEnumerator OnProcess();
     }
-    
+
     public abstract class YieldProcess<T> : YieldProcess
     {
         public T Result { get; private set; }
 
-        public override IEnumerator Process()
+        protected sealed override IEnumerator OnProcess()
         {
-            yield return OnProcess();
+            yield return OnProcessWithResult();
 
             Result = GetResult();
         }
         
-        protected abstract IEnumerator OnProcess();
+        protected abstract IEnumerator OnProcessWithResult();
         protected abstract T GetResult();
     }
 }

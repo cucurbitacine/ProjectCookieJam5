@@ -16,8 +16,17 @@ MonoBehaviour:
   m_interactDescription: If there's somethin' weird, and it don't look good, who you gon' call?
   m_difficulty: 15
   m_actionPointCost: 1
-  m_willCost: 2
+  m_willCost: 3
+  m_actionCost:
+    ActionPoints: 1
+    Will: 3
   m_willReward: 0
   m_comfortReward: 0
+  m_actionReward:
+    Will: 0
+    Comfort: 0
+    NextDice: 0
   m_oncePerGame: 1
   m_oncePerDay: 1
+  m_resultSuccess: 
+  m_resultFailure: 

@@ -14,5 +14,10 @@ namespace Game.Scripts.FX
 
             label.text = message;
         }
+        
+        public void ChangeColor(Color color)
+        {
+            label.color = color;
+        }
     }
 }

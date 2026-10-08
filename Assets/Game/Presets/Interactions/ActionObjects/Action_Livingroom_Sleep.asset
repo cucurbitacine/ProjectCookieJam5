@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37674e468746432bafbd2ea9e52534cc, type: 3}
-  m_Name: Action_Livingroom_Sofa
+  m_Name: Action_Livingroom_Sleep
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
-  m_interactName: Rest a little bit
+  m_interactName: Nap a little bit
   m_interactDescription: Every hour on that sofa will be seven years back on Earth... Or not
   m_difficulty: 5
-  m_actionPointCost: 1
-  m_willCost: 0
-  m_willReward: 1
-  m_comfortReward: 1
+  m_actionCost:
+    ActionPoints: 1
+    Will: 0
+  m_actionReward:
+    Will: 1
+    Comfort: 1
+    NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
+  m_resultSuccess: 
+  m_resultFailure: 

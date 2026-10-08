@@ -11,11 +11,14 @@ namespace Game.Scripts.Levels.Game
     {
         #region SerializeField
 
+        [SerializeField] private int m_currentDay = 0;
+        
         [Header("States")]
         [SerializeField] private GameState m_gameState;
         [SerializeField] private InitializeState m_initializeState = new InitializeState();
         [SerializeField] private StartState m_startState = new StartState();
         [SerializeField] private DayState m_dayState = new DayState();
+        [SerializeField] private EndDayState m_endDayState = new EndDayState();
         
         [Header("Settings")]
         [SerializeField] private LevelSceneAsset menuScene;
@@ -35,6 +38,7 @@ namespace Game.Scripts.Levels.Game
 
         #region Public API
 
+        public event Action<int, int> DayChanged;
         public event Action<GameState, GameState> GameStateChanged;
         
         public GameState GetGameState()
@@ -67,6 +71,19 @@ namespace Game.Scripts.Levels.Game
         public PawnPlayerController GetPlayer()
         {
             return m_pawnPlayer;
+        }
+        
+        public void IncreaseDayCounter()
+        {
+            var prevDay = m_currentDay;
+            m_currentDay++;
+            
+            DayChanged?.Invoke(prevDay, m_currentDay);
+        }
+        
+        public int GetCurrentDay()
+        {
+            return m_currentDay;
         }
         
         #endregion
@@ -124,6 +141,7 @@ namespace Game.Scripts.Levels.Game
             AddState(GameState.Initialize, m_initializeState);
             AddState(GameState.StartGame, m_startState);
             AddState(GameState.Day, m_dayState);
+            AddState(GameState.EndDay, m_endDayState);
         }
 
         protected override IEnumerator StartLevel()

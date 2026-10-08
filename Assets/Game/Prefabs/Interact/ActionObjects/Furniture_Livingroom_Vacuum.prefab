@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.89243
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 803747266350146307, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216558833880881141, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6366109480956113911, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Sprite
@@ -99,14 +99,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1427688556574609859}
+      addedObject: {fileID: 8003910817467679882}
   m_SourcePrefab: {fileID: 100100000, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
 --- !u!1 &5691861223080881527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
   m_PrefabInstance: {fileID: 8410137656527038599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1427688556574609859
+--- !u!114 &8003910817467679882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,12 +115,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5691861223080881527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e4f7ed2c634a199eb47c5311f3e3c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb47c9a7cf54e648a574b476518a307, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.ActionObject
+  m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.VacuumObject
   m_interactPreset: {fileID: 11400000, guid: e29e9bf0503a97340ba9425f8e3f488b, type: 2}
   m_hovered: 0
   m_selected: 0
   m_interacted: 0
   m_donePerGame: 0
   m_donePerDay: 0
+  m_debuffComfortOnStartDay: 1

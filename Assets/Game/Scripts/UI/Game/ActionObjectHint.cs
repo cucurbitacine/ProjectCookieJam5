@@ -1,3 +1,4 @@
+using System.Linq;
 using Game.Scripts.Interactions;
 using Game.Scripts.Interactions.Impl;
 using Game.Scripts.Pawns;
@@ -40,7 +41,7 @@ namespace Game.Scripts.UI.Game
             var difficulty = actionPreset.GetDifficulty();
             m_difficulty.text = $"{difficulty}";
             
-            var chance = pawn.GetDice().EvaluateChance(difficulty);
+            var chance = DiceResult.EvaluateChance(difficulty, pawn.GetDice().GetBonuses().Sum(b => b.Value));
             m_chance.text = $"{(chance * 100):F0}%";
             
             var cost = actionPreset.GetCost();

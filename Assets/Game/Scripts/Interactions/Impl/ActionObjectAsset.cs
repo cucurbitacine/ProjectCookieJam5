@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Pawns;
 using UnityEngine;
 
@@ -10,33 +11,27 @@ namespace Game.Scripts.Interactions.Impl
         [Range(1, 20)] [SerializeField] private int m_difficulty = 1;
         
         [Header("Cost")]
-        [Min(0)] [SerializeField] private int m_actionPointCost = 1;
-        [Min(0)] [SerializeField] private int m_willCost = 1;
+        [SerializeField] private ActionCost m_actionCost = new ActionCost();
         
         [Header("Reward")]
-        [SerializeField] private int m_willReward = 0;
-        [SerializeField] private int m_comfortReward = 0;
+        [SerializeField] private ActionReward m_actionReward = new ActionReward();
 
         [Header("Settings")]
         [SerializeField] private bool m_oncePerGame = false;
         [SerializeField] private bool m_oncePerDay = false;
         
+        [Header("Results")]
+        [Multiline] [SerializeField] private string m_resultSuccess;
+        [Multiline] [SerializeField] private string m_resultFailure;
+
         public ActionCost GetCost()
         {
-            return new ActionCost()
-            {
-                ActionPoints = m_actionPointCost,
-                Will = m_willCost,
-            };
+            return m_actionCost;
         }
 
         public ActionReward GetReward()
         {
-            return new ActionReward()
-            {
-                Will = m_willReward,
-                Comfort = m_comfortReward,
-            };
+            return m_actionReward;
         }
         
         public bool OncePerGame()
@@ -54,34 +49,55 @@ namespace Game.Scripts.Interactions.Impl
             return m_difficulty;
         }
         
-        public bool CanCharge(PawnStats pawnStats)
+        public string GetActionResult(bool success)
         {
-            return pawnStats.ContainsActionPoints(m_actionPointCost) &&
-                   pawnStats.ContainsWill(m_willCost);
+            return success ? m_resultSuccess : m_resultFailure;
         }
         
-        public void Charge(PawnStats pawnStats)
+        public bool CanCharge(PawnController pawn)
         {
-            pawnStats.AddActionPoints(-m_actionPointCost);
-            pawnStats.AddWill(-m_willCost);
+            var pawnStats = pawn.GetStats();
+            var cost = GetCost();
+            return pawnStats.ContainsActionPoints(cost.ActionPoints) &&
+                   pawnStats.ContainsWill(cost.Will);
         }
         
-        public void Reward(PawnStats pawnStats)
+        public void Charge(PawnController pawn)
         {
-            pawnStats.AddWill(m_willReward);
-            pawnStats.AddComfort(m_comfortReward);
+            var pawnStats = pawn.GetStats();
+            
+            var cost = GetCost();
+            pawnStats.AddActionPoints(-cost.ActionPoints);
+            pawnStats.AddWill(-cost.Will);
+        }
+        
+        public void Reward(PawnController pawn)
+        {
+            var pawnStats = pawn.GetStats();
+            
+            var reward = GetReward();
+            pawnStats.AddWill(reward.Will);
+            pawnStats.AddComfort(reward.Comfort);
+
+            if (reward.NextDice != 0)
+            {
+                pawn.GetDice().AddNextDiceBonus(reward.NextDice);
+            }
         }
     }
 
+    [Serializable]
     public struct ActionCost
     {
-        public int ActionPoints;
-        public int Will;
+        [Min(0)] public int ActionPoints;
+        [Min(0)] public int Will;
     }
     
+    [Serializable]
     public struct ActionReward
     {
-        public int Will;
-        public int Comfort;
+        [Min(0)] public int Will;
+        [Min(0)] public int Comfort;
+        public int NextDice;
     }
 }
