@@ -17,6 +17,8 @@ namespace Game.Scripts.FX
         
         public void Toggle(bool value)
         {
+            return; // TODO Outline doesnt work on WEB
+            
             if (outlinePreset == null) return;
             
             for (var i = 0; i < m_materials.Length; i++)
@@ -29,6 +31,8 @@ namespace Game.Scripts.FX
 
         private void Awake()
         {
+            return; // TODO Outline doesnt work on WEB
+            
             m_materials = new Material[m_sprites.Length];
             m_keywords = new LocalKeyword[m_sprites.Length];
 

@@ -28,10 +28,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furniture_Kitchen_Fridge
       objectReference: {fileID: 0}
-    - target: {fileID: 6366109480956113911, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 6c161857a89eed448a9b4b07213c2052, type: 2}
     - target: {fileID: 6646513628397240919, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Interactions.Impl;
@@ -12,16 +11,12 @@ namespace Game.Scripts.Pawns
         
         [Space]
         [SerializeField] private bool m_debugRandomize = true;
-        [SerializeField] private float m_debugProcessDuration = 1f;
         [Space]
         [Range(1, 20)] [SerializeField] private int m_debugDiceValueClear = 20;
         [SerializeField] private int m_onlyNextDiceBonus;
-        [SerializeField] private int m_debugDiceValueResult;
 
         [Space]
         [SerializeField] private DiceProcessController m_diceProcessPrefab;
-        
-
         
         public PawnController GetPawn()
         {
@@ -79,8 +74,6 @@ namespace Game.Scripts.Pawns
             {
                 m_onlyNextDiceBonus = 0;
             }
-            
-            m_debugDiceValueResult = diceResult.Result;
             
             return diceResult;
         }

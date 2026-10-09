@@ -19,6 +19,7 @@ namespace Game.Scripts.Levels.Game
         [SerializeField] private StartState m_startState = new StartState();
         [SerializeField] private DayState m_dayState = new DayState();
         [SerializeField] private EndDayState m_endDayState = new EndDayState();
+        [SerializeField] private EndGameState m_endGameState = new EndGameState();
         
         [Header("Settings")]
         [SerializeField] private LevelSceneAsset menuScene;
@@ -31,6 +32,7 @@ namespace Game.Scripts.Levels.Game
         #region Private members
 
         private PawnPlayerController m_pawnPlayer;
+        private TaskListController m_taskList;
         private GameState m_previousGameState;
         private readonly Dictionary<GameState, GameStateBehaviour> m_states = new Dictionary<GameState, GameStateBehaviour>();
 
@@ -72,6 +74,11 @@ namespace Game.Scripts.Levels.Game
         {
             return m_pawnPlayer;
         }
+
+        public TaskListController GetTaskList()
+        {
+            return m_taskList;
+        }
         
         public void IncreaseDayCounter()
         {
@@ -90,6 +97,12 @@ namespace Game.Scripts.Levels.Game
 
         #region Private API
 
+        [ContextMenu(nameof(EndGameNow))]
+        private void EndGameNow()
+        {
+            ChangeGameState(GameState.EndGame);
+        }
+        
         private void AddState(GameState gameState, GameStateBehaviour state)
         {
             m_states[gameState] = state;
@@ -132,6 +145,7 @@ namespace Game.Scripts.Levels.Game
         protected override void OnAwake()
         {
             m_pawnPlayer = FindAnyObjectByType<PawnPlayerController>();
+            m_taskList = FindAnyObjectByType<TaskListController>();
         }
 
         public override void BindAll(LevelContext context)
@@ -142,6 +156,7 @@ namespace Game.Scripts.Levels.Game
             AddState(GameState.StartGame, m_startState);
             AddState(GameState.Day, m_dayState);
             AddState(GameState.EndDay, m_endDayState);
+            AddState(GameState.EndGame, m_endGameState);
         }
 
         protected override IEnumerator StartLevel()

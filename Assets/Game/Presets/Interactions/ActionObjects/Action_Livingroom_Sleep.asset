@@ -19,10 +19,10 @@ MonoBehaviour:
     ActionPoints: 1
     Will: 0
   m_actionReward:
-    Will: 1
-    Comfort: 1
+    Will: 2
+    Comfort: 0
     NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: Oh, I feel much better!
+  m_resultFailure: Whoa! Where am I? Who am I? What time is it? Why am I so sweaty?

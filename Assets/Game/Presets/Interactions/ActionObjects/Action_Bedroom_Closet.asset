@@ -24,5 +24,5 @@ MonoBehaviour:
     NextDice: 0
   m_oncePerGame: 1
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: Now I know where everything is! I didn't know I had a blue sweater!
+  m_resultFailure: Red suits me so well... But why did I come here?

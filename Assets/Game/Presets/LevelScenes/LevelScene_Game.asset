@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89111ae4a9b74cf69aec2dce34479648, type: 3}
   m_Name: LevelScene_Game
   m_EditorClassIdentifier: CucuTools.LevelSystem::CucuTools.LevelSystem.LevelSceneAsset
-  sceneBuildIndex: 1
+  sceneBuildIndex: 2
   loadSceneParameters:
     m_LoadSceneMode: 0
     m_LocalPhysicsMode: 0

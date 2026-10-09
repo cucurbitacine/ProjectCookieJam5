@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -19,7 +20,7 @@ namespace Game.Scripts.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            onExit.Invoke();
+            OnExit.Invoke();
         }
     }
 }

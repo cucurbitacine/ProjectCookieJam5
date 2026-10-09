@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3075965156981005496, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4200523661895026160, guid: fa68aa56b7017f1419d071a2109e62c8, type: 3}
       propertyPath: m_Name
       value: Furniture_Kitchen_Cookie
@@ -128,5 +132,4 @@ MonoBehaviour:
   m_interacted: 0
   m_donePerGame: 0
   m_donePerDay: 0
-  m_actionStats: {fileID: 11400000, guid: 60ae85f2bbd7037428381116d9b0b86a, type: 2}
   m_nextDiceBonus: 2

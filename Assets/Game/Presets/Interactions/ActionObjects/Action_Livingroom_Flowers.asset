@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Action_Livingroom_Flowers
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
   m_interactName: Water the flowers
-  m_interactDescription: 'Roses are red, violets are blue, rate my game, thank you! '
+  m_interactDescription: 'Roses are red, violets are blue, rate my game, and thank you! '
   m_difficulty: 2
   m_actionCost:
     ActionPoints: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
     NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: The flowers smell so good!
+  m_resultFailure: Did the flower just turn away from me? Did I do something wrong?

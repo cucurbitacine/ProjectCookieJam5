@@ -48,9 +48,11 @@ MonoBehaviour:
   m_processState: 0
   m_done: 0
   m_canceled: 0
-  m_rollingDuration: 1
-  m_bonusDuration: 1
+  m_rollingDuration: 2
+  m_bonusDuration: 2
   m_resultDuration: 60
+  m_confirmAction: {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_cancelAction: {fileID: 7727032971491509709, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1001 &4628435617428625327
 PrefabInstance:
   m_ObjectHideFlags: 0

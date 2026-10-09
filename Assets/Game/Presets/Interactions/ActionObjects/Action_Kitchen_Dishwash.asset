@@ -24,5 +24,5 @@ MonoBehaviour:
     NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 0
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: It's over! Now I have cookware. Great...
+  m_resultFailure: The grease stains won't come off, no matter how hard I scrub!

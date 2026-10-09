@@ -8,6 +8,8 @@ namespace Game.Scripts.Pawns
     {
         [SerializeField] private PawnStatsData m_statsData;
 
+        [SerializeField] private int minComfort = -1000;
+        
         public Action<StatsType, int, int> StatsChanged;
         
         public PawnStatsData GetStatsData()
@@ -20,9 +22,11 @@ namespace Game.Scripts.Pawns
             var prevData = m_statsData;
             m_statsData = stats;
 
-            CheckChange(StatsType.ActionPoints, prevData.ActionPoints, stats.ActionPoints);
-            CheckChange(StatsType.Will, prevData.Will, stats.Will);
-            CheckChange(StatsType.Comfort, prevData.Comfort, stats.Comfort);
+            m_statsData.Comfort = Mathf.Max(minComfort, m_statsData.Comfort);
+            
+            CheckChange(StatsType.ActionPoints, prevData.ActionPoints, m_statsData.ActionPoints);
+            CheckChange(StatsType.Will, prevData.Will, m_statsData.Will);
+            CheckChange(StatsType.Comfort, prevData.Comfort, m_statsData.Comfort);
         }
 
         private void CheckChange(StatsType type, int prev, int next)

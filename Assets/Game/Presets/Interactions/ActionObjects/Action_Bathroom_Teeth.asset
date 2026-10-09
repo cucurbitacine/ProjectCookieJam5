@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Action_Bathroom_Teeth
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
   m_interactName: Brush teeth
-  m_interactDescription: Do I really do this every day?
+  m_interactDescription: Do we really do this every day?
   m_difficulty: 2
   m_actionCost:
     ActionPoints: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
     NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: "Hey handsome, who\u2019s got such fresh breath, huh?"
+  m_resultFailure: Meh, I was too rough, my gum started bleeding...

@@ -12,6 +12,7 @@ namespace Game.Scripts.UI.Game
     public class DiceProcessUI : MonoBehaviour
     {
         [SerializeField] private DiceProcessController m_diceProcess;
+        [SerializeField] private ColorGradientAsset m_chanceColor;
 
         [Header("Action")]
         [SerializeField] private TMP_Text m_textActionName;
@@ -57,7 +58,20 @@ namespace Game.Scripts.UI.Game
         
         private void OnButtonOkClick()
         {
-            GetProcess().Close();
+            var processState = GetProcess().GetProcessState();
+            if (processState is DiceProcessState.Result)
+            {
+                GetProcess().Close();
+            }
+            else if (processState is DiceProcessState.Rolling)
+            {
+                GetProcess().Bonuses();
+                //GetProcess().Result();
+            }
+            else if (processState is DiceProcessState.Bonuses)
+            {
+                GetProcess().Result();
+            }
         }
         
         private void OnReady()
@@ -75,6 +89,7 @@ namespace Game.Scripts.UI.Game
                 
             var chance = DiceResult.EvaluateChance(difficulty, bonus);
             m_textActionChance.text = $"{(chance * 100):F0}%";
+            if (m_chanceColor) m_textActionChance.color = m_chanceColor.Evaluate(chance);
             
             m_textDiceResult.enabled = false;
             m_textActionResult.enabled = false;
@@ -90,12 +105,16 @@ namespace Game.Scripts.UI.Game
         
         private void OnRolling()
         {
-            m_buttonRoll.gameObject.SetActive(false);
-            m_buttonClose.gameObject.SetActive(false);
-            
-            m_buttonRoll.onClick.RemoveListener(OnButtonRollClick);
-            m_buttonClose.onClick.RemoveListener(OnButtonCloseClick);
 
+            m_buttonClose.gameObject.SetActive(false);
+            m_buttonClose.onClick.RemoveListener(OnButtonCloseClick);
+            
+            m_buttonRoll.gameObject.SetActive(false);
+            m_buttonRoll.onClick.RemoveListener(OnButtonRollClick);
+            
+            m_buttonOk.gameObject.SetActive(true);
+            m_buttonOk.onClick.AddListener(OnButtonOkClick);
+            
             m_fakeNumberTimer = 0f;
 
             // Start Animation
@@ -109,13 +128,14 @@ namespace Game.Scripts.UI.Game
             m_imageDice.transform.rotation = Quaternion.identity;
 
             m_diceEffect.LaunchEffect();
-            m_diceBonusEffect.LaunchEffect();
             
             // Start Bonus Animation
         }
         
         private void OnResult()
         {
+            m_diceBonusEffect.LaunchEffect();
+            
             var diceResult = GetProcess().GetDiceResult();
             var crit = diceResult.Clear is 1 or 20;
             m_textDiceNumber.text = $"{(crit ? diceResult.Clear: diceResult.Result)}";
@@ -131,9 +151,6 @@ namespace Game.Scripts.UI.Game
             
             m_textActionResult.enabled = true;
             m_textActionResult.text = action.GetActionResult(success);
-            
-            m_buttonOk.gameObject.SetActive(true);
-            m_buttonOk.onClick.AddListener(OnButtonOkClick);
             
             m_buttonClose.gameObject.SetActive(true);
             m_buttonClose.onClick.AddListener(OnButtonCloseClick);

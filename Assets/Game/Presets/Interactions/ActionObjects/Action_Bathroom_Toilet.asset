@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Action_Bathroom_Toilet
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
   m_interactName: Use the toilet
-  m_interactDescription: Time for doomscrolling...
+  m_interactDescription: I did bring my phone with me, right?
   m_difficulty: 2
   m_actionCost:
     ActionPoints: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
     NextDice: 0
   m_oncePerGame: 0
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: I did everything what I wanted.
+  m_resultFailure: Oh, shot! I completely forgot why I came here!

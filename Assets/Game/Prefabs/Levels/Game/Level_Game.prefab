@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7792882065380126138}
   - component: {fileID: 461336312131624854}
   - component: {fileID: 2653467019354935647}
+  - component: {fileID: 8679928679316897321}
   m_Layer: 0
   m_Name: Level_Game
   m_TagString: Untagged
@@ -47,15 +48,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.Scripts.Levels.Game.GameLevelController
   m_currentDay: 0
   m_gameState: 0
+  m_startState:
+    m_statsOnStartGame:
+      ActionPoints: 0
+      Will: 3
+      Comfort: 0
   m_dayState:
     m_keepActionPoints: 0
-    m_keepWill: 0
-    m_keepComfort: 0
+    m_keepWill: 1
+    m_keepComfort: 1
     m_statsOnStartDay:
       ActionPoints: 3
-      Will: 4
+      Will: 1
       Comfort: 0
-    m_bedObject: {fileID: 0}
+    m_debugMode: 0
+    m_debugStatsOnStartDay:
+      ActionPoints: 99
+      Will: 99
+      Comfort: 0
+  m_endDayState:
+    m_lastDay: 7
   menuScene: {fileID: 11400000, guid: 73beee8e15ffedb4eb8d071ba3576b54, type: 2}
   m_debugLog: 0
 --- !u!114 &2653467019354935647
@@ -72,3 +84,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.Scripts.Levels.TeleportationManager
   m_durationIn: 0.4
   m_durationOut: 0.25
+--- !u!114 &8679928679316897321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686484317689409347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aeddf5433cb4dea8fd058f48633981c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.Levels.Game.TaskListController

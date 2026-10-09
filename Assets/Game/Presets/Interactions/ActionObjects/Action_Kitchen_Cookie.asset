@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Action_Kitchen_Cookie
   m_EditorClassIdentifier: Game::Game.Scripts.Interactions.Impl.TodoStats
   m_interactName: Cookie
-  m_interactDescription: COOKIE!!1!
+  m_interactDescription: 'COOKIE!!1!
+
+    I feel like I''ll gain an advantage in the next action!'
   m_difficulty: 2
   m_actionCost:
     ActionPoints: 0
@@ -24,5 +26,5 @@ MonoBehaviour:
     NextDice: 2
   m_oncePerGame: 0
   m_oncePerDay: 1
-  m_resultSuccess: 
-  m_resultFailure: 
+  m_resultSuccess: +2 to the next roll
+  m_resultFailure: Apathy... I ate a cookie, but I feel nothing in this life...

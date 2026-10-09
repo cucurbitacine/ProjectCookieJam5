@@ -10,6 +10,7 @@ namespace Game.Scripts.UI.Game
     public class ActionObjectHint : MonoBehaviour
     {
         [SerializeField] private InteractState m_updateState = InteractState.Select;
+        [SerializeField] private ColorGradientAsset m_chanceColor;
         
         [Header("Action Object")]
         [SerializeField] private TMP_Text m_difficulty;
@@ -43,6 +44,7 @@ namespace Game.Scripts.UI.Game
             
             var chance = DiceResult.EvaluateChance(difficulty, pawn.GetDice().GetBonuses().Sum(b => b.Value));
             m_chance.text = $"{(chance * 100):F0}%";
+            if (m_chanceColor) m_chance.color = m_chanceColor.Evaluate(chance);
             
             var cost = actionPreset.GetCost();
             var costText = $"";

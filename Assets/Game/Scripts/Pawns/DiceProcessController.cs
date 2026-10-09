@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game.Scripts.Interactions.Impl;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Scripts.Pawns
 {
@@ -15,6 +16,10 @@ namespace Game.Scripts.Pawns
         [SerializeField] private float m_rollingDuration = 2f;
         [SerializeField] private float m_bonusDuration = 2f;
         [SerializeField] private float m_resultDuration = 60f;
+        
+        [Space]
+        [SerializeField] private InputActionReference m_confirmAction;
+        [SerializeField] private InputActionReference m_cancelAction;
         
         private DiceController m_dice;
         private ActionObjectAsset m_action;
@@ -102,14 +107,14 @@ namespace Game.Scripts.Pawns
             }
         }
         
-        private void Bonuses()
+        public void Bonuses()
         {
             m_diceResult = GetDice().GenerateDiceResult();
             
             ChangeProcessState(DiceProcessState.Bonuses);
         }
 
-        private void Result()
+        public void Result()
         {
             ChangeProcessState(DiceProcessState.Result);
         }
@@ -175,6 +180,55 @@ namespace Game.Scripts.Pawns
                     m_timerResult += deltaTime;
                 }
             }
+        }
+        
+        private void OnConfirmInput(InputAction.CallbackContext context)
+        {
+            if (!context.ReadValueAsButton()) return;
+            
+            if (GetProcessState() is DiceProcessState.Ready)
+            {
+                Roll();
+            }
+            else if (GetProcessState() is DiceProcessState.Rolling)
+            {
+                Bonuses();
+                //Result();
+            }
+            else if (GetProcessState() is DiceProcessState.Bonuses)
+            {
+                Result();
+            }
+            else if (GetProcessState() is DiceProcessState.Result)
+            {
+                Close();
+            }
+        }
+
+        private void OnCancelInput(InputAction.CallbackContext context)
+        {
+            if (!context.ReadValueAsButton()) return;
+            
+            if (GetProcessState() is DiceProcessState.Ready)
+            {
+                Close();
+            }
+            else if (GetProcessState() is DiceProcessState.Result)
+            {
+                Close();
+            }
+        }
+        
+        private void OnEnable()
+        {
+            m_confirmAction.action.started += OnConfirmInput;
+            m_cancelAction.action.started += OnCancelInput;
+        }
+
+        private void OnDisable()
+        {
+            m_confirmAction.action.started -= OnConfirmInput;
+            m_cancelAction.action.started -= OnCancelInput;
         }
         
         private void Start()

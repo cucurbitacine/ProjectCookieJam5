@@ -1,4 +1,6 @@
+using System;
 using Game.Scripts.Interactions.Impl;
+using Game.Scripts.Levels.Game;
 using UnityEngine;
 
 namespace Game.Scripts.UI.Game
@@ -9,46 +11,25 @@ namespace Game.Scripts.UI.Game
         [SerializeField] private GameObject m_vacuumTask;
         [SerializeField] private GameObject m_closetTask;
         [SerializeField] private GameObject m_washingTask;
-        
-        private SinkObject m_sink;
-        private VacuumObject m_vacuum;
-        private ClosetObject m_closet; 
-        private WashingObject m_washing;
 
-        public bool IsSinkDone()
-        {
-            return !m_sink.HasDishFlag();
-        }
+        private TaskListController m_taskList;
         
-        public bool IsVacuumDone()
+        public TaskListController GetTaskList()
         {
-            return m_vacuum.HasDonePerGameFlag();
+            return m_taskList;
         }
-        
-        public bool IsClosetDone()
-        {
-            return m_closet.HasDonePerGameFlag();
-        }
-        
-        public bool IsWashingDone()
-        {
-            return m_washing.HasDonePerGameFlag();
-        }
-        
+
         private void Awake()
         {
-            m_sink = FindAnyObjectByType<SinkObject>();
-            m_vacuum = FindAnyObjectByType<VacuumObject>();
-            m_closet = FindAnyObjectByType<ClosetObject>();
-            m_washing = FindAnyObjectByType<WashingObject>();
+            m_taskList = FindAnyObjectByType<TaskListController>();
         }
 
         private void Update()
         {
-            m_sinkTask.SetActive(!IsSinkDone());
-            m_vacuumTask.SetActive(!IsVacuumDone());
-            m_closetTask.SetActive(!IsClosetDone());
-            m_washingTask.SetActive(!IsWashingDone());
+            m_sinkTask.SetActive(!GetTaskList().IsSinkDone());
+            m_vacuumTask.SetActive(!GetTaskList().IsVacuumDone());
+            m_closetTask.SetActive(!GetTaskList().IsClosetDone());
+            m_washingTask.SetActive(!GetTaskList().IsWashingDone());
         }
     }
 }
