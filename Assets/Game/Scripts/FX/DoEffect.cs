@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.FX
 {
@@ -7,6 +8,7 @@ namespace Game.Scripts.FX
     {
         [SerializeField] private Transform _targetObject;
         [SerializeField] private EffectEvent effectEvent = EffectEvent.Manual;
+        [SerializeField] private UnityEvent onEffect = new UnityEvent();
         
         private Tweener _tweener;
         
@@ -18,6 +20,8 @@ namespace Game.Scripts.FX
             KillTweener();
             
             _tweener = CreateTweener(GetTargetObject());
+            
+            onEffect.Invoke();
         }
         
         public void KillTweener()

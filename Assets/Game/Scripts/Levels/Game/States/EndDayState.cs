@@ -51,14 +51,6 @@ namespace Game.Scripts.Levels.Game.States
         
         public override void Enter()
         {
-        }
-
-        public override void Exit()
-        {
-        }
-
-        public override void Update(float deltaTime)
-        {
             if (IsWin())
             {
                 m_onWin.Invoke();
@@ -67,6 +59,14 @@ namespace Game.Scripts.Levels.Game.States
             {
                 m_onLoose.Invoke();
             }
+        }
+
+        public override void Exit()
+        {
+        }
+
+        public override void Update(float deltaTime)
+        {
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Game.Scripts.Interactions
 {
-    public class InteractTargetEvent : MonoBehaviour
+    public class InteractableObjectEvent : MonoBehaviour
     {
         [SerializeField] private InteractState m_interactState;
         [Space]

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Scripts.Pawns;
 using UnityEngine;
@@ -12,6 +13,10 @@ namespace Game.Scripts.Interactions.Impl
         
         private ActionObjectAsset m_actionStats;
         private Coroutine m_interacting;
+
+        public event Action onAttempt;
+        public event Action onSuccess;
+        public event Action onFailure;
         
         public ActionObjectAsset GetActionPreset()
         {
@@ -74,6 +79,7 @@ namespace Game.Scripts.Interactions.Impl
                     actionStats.Charge(pawn);
                 
                     OnAttempt(pawn);
+                    onAttempt?.Invoke();
                     
                     var diceResult = diceProcess.Result;
                     if (diceResult.Evaluate(actionStats.GetDifficulty()))
@@ -83,10 +89,12 @@ namespace Game.Scripts.Interactions.Impl
                         actionStats.Reward(pawn);
                     
                         OnSuccess(pawn);
+                        onSuccess?.Invoke();
                     }
                     else
                     {
                         OnFailure(pawn);
+                        onFailure?.Invoke();
                     }   
                 }
             }

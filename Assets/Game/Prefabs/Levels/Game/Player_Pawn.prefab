@@ -114,6 +114,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8352793777987680516}
     m_Modifications:
+    - target: {fileID: 7571692722898588286, guid: 0661c29314d463040b40eb24e7c2440a, type: 3}
+      propertyPath: minComfort
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571692722898588286, guid: 0661c29314d463040b40eb24e7c2440a, type: 3}
+      propertyPath: m_statsData.Will
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8628771475414780775, guid: 0661c29314d463040b40eb24e7c2440a, type: 3}
       propertyPath: m_Name
       value: Pawn_Base

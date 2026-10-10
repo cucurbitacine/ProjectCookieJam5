@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game.Scripts.Interactions.Impl;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Game.Scripts.Pawns
@@ -20,6 +21,12 @@ namespace Game.Scripts.Pawns
         [Space]
         [SerializeField] private InputActionReference m_confirmAction;
         [SerializeField] private InputActionReference m_cancelAction;
+        
+        [Space]
+        [SerializeField] private UnityEvent m_onRoll;
+        [SerializeField] private UnityEvent m_onBonus;
+        [SerializeField] private UnityEvent m_onResultSuccess;
+        [SerializeField] private UnityEvent m_onResultFailure;
         
         private DiceController m_dice;
         private ActionObjectAsset m_action;
@@ -134,6 +141,25 @@ namespace Game.Scripts.Pawns
             if (enter is DiceProcessState.Ready)
             {
                 GetDice().GetPawn().Mute(true);
+            }
+            else if (enter is DiceProcessState.Rolling)
+            {
+                m_onRoll.Invoke();
+            }
+            else if (enter is DiceProcessState.Bonuses)
+            {
+                m_onBonus.Invoke();
+            }
+            else if (enter is DiceProcessState.Result)
+            {
+                if (GetDiceResult().Evaluate(m_action.GetDifficulty()))
+                {
+                    m_onResultSuccess.Invoke();
+                }
+                else
+                {
+                    m_onResultFailure.Invoke();
+                }
             }
             else if (enter is DiceProcessState.Exit)
             {
